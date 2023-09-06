@@ -7,23 +7,23 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace S2_circustrein
 {
-    public class StationClass
+    public class Station
     {
-        public List<WagonClass> Train { get; private set; }
+        public List<Wagon> Train { get; private set; }
 
-        public StationClass() { 
-            Train = new List<WagonClass>();
+        public Station() { 
+            Train = new List<Wagon>();
         }
 
-        public List<WagonClass> MakeTrain(List<AnimalClass> Animals)
+        public List<Wagon> MakeTrain(List<Animal> Animals)
         {
-            Train = new List<WagonClass>();
+            Train = new List<Wagon>();
 
-            List<AnimalClass> SortedAnimals = Sort(Animals);
-            foreach (AnimalClass Animal in SortedAnimals)
+            List<Animal> SortedAnimals = Sort(Animals);
+            foreach (Animal Animal in SortedAnimals)
             {
                 bool IsNotAdded = true;
-                foreach (WagonClass Wagon in Train) { 
+                foreach (Wagon Wagon in Train) { 
                     if (Wagon.CanAddAnimal(Animal) && IsNotAdded)
                     {
                         IsNotAdded = false;
@@ -32,7 +32,7 @@ namespace S2_circustrein
                 }
                 if (IsNotAdded)
                 {
-                    WagonClass NewWagon = new();
+                    Wagon NewWagon = new();
                     NewWagon.AddAnimal(Animal);
                     Train.Add(NewWagon);
                 }
@@ -40,9 +40,9 @@ namespace S2_circustrein
             return Train;
         }
 
-        private List<AnimalClass> Sort(List<AnimalClass> Animals)
+        private List<Animal> Sort(List<Animal> Animals)
         {
-            List<AnimalClass> AnimalsSorted = Animals.OrderByDescending(animal => animal.Size).ToList();
+            List<Animal> AnimalsSorted = Animals.OrderByDescending(animal => animal.Size).ToList();
             AnimalsSorted = AnimalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
 
             return AnimalsSorted;

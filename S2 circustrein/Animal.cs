@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S2_circustrein
 {
-    public class AnimalClass
+    public class Animal
     {
         public enum SizeEnum
         {
@@ -18,15 +18,15 @@ namespace S2_circustrein
         public string Name { get; private set; }
 
 
-        public AnimalClass(SizeEnum _size, bool _carnivorous, string _name)
+        public Animal(SizeEnum _size, bool _carnivorous, string _name)
         {
             Size = _size;
             Carnivorous = _carnivorous;
             Name = _name;
         }
 
-        public bool CanEat(AnimalClass _victim) {
-            AnimalClass _aggressor = new(Size, Carnivorous, Name); 
+        public bool CanEat(Animal _victim) {
+            Animal _aggressor = new(Size, Carnivorous, Name); 
             if (_aggressor.Carnivorous && _aggressor.Size >= _victim.Size)
             {
                 return true;

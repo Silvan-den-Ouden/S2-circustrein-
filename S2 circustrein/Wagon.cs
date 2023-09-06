@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace S2_circustrein
 {
-    public class WagonClass
+    public class Wagon
     {
         private readonly int MaxSize = 10;
-        public List<AnimalClass> Passangers { get; private set; }
+        public List<Animal> Passangers { get; private set; }
 
-        public WagonClass()
+        public Wagon()
         {
-            Passangers = new List<AnimalClass>();
+            Passangers = new List<Animal>();
         }
 
-        public bool CanAddAnimal(AnimalClass PotentialPassanger)
+        public bool CanAddAnimal(Animal PotentialPassanger)
         {
             if (!AnimalFits(PotentialPassanger))
             {
                 return false;
             }
 
-            foreach (AnimalClass Passanger in Passangers)
+            foreach (Animal Passanger in Passangers)
             {
                 if (PotentialPassanger.CanEat(Passanger) || Passanger.CanEat(PotentialPassanger))
                 {
@@ -33,7 +33,7 @@ namespace S2_circustrein
             return true;
         }
 
-        private bool AnimalFits(AnimalClass PotentialMatchAnimal)
+        private bool AnimalFits(Animal PotentialMatchAnimal)
         {
             if ((int)PotentialMatchAnimal.Size + GetCurrentSize() > MaxSize)
             {
@@ -45,14 +45,14 @@ namespace S2_circustrein
         private int GetCurrentSize()
         {
             int wagonSize = 0;
-            foreach(AnimalClass Passanger in Passangers)
+            foreach(Animal Passanger in Passangers)
             {
                 wagonSize += (int)Passanger.Size;
             }
             return wagonSize;
         }
 
-        public void AddAnimal(AnimalClass Animal)
+        public void AddAnimal(Animal Animal)
         {
             Passangers.Add(Animal);
         }
