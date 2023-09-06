@@ -25,9 +25,9 @@ namespace S2_circustrein
             Name = _name;
         }
 
-        public bool CanEat(Animal _victim) {
-            Animal _aggressor = new(Size, Carnivorous, Name); 
-            if (_aggressor.Carnivorous && _aggressor.Size >= _victim.Size)
+        public bool CanEat(Animal victim) {
+            Animal aggressor = new(Size, Carnivorous, Name); 
+            if (aggressor.Carnivorous && aggressor.Size >= victim.Size)
             {
                 return true;
             }

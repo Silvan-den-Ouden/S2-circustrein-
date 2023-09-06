@@ -27,10 +27,10 @@ for(int i = 0; i < 10; i++) {
     station.MakeTrain(test_case_fr_fr);
 
     Console.WriteLine($"Train {i+1}:");
-    for(int j = 0; j < station.Train.Count; j++)
+    for(int j = 0; j < station.wagons.Count; j++)
     {
         Console.WriteLine($"    Wagon {j+1}: ");
-        foreach(Animal animal in station.Train[j].Passangers)
+        foreach(Animal animal in station.wagons[j].passangers)
         {
             Console.WriteLine("        " + animal.Name);
         }

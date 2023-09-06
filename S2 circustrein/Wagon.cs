@@ -8,24 +8,24 @@ namespace S2_circustrein
 {
     public class Wagon
     {
-        private readonly int MaxSize = 10;
-        public List<Animal> Passangers { get; private set; }
+        private readonly int maxSize = 10;
+        public List<Animal> passangers { get; private set; }
 
         public Wagon()
         {
-            Passangers = new List<Animal>();
+            passangers = new List<Animal>();
         }
 
-        public bool CanAddAnimal(Animal PotentialPassanger)
+        public bool CanAddAnimal(Animal potentialPassanger)
         {
-            if (!AnimalFits(PotentialPassanger))
+            if (!AnimalFits(potentialPassanger))
             {
                 return false;
             }
 
-            foreach (Animal Passanger in Passangers)
+            foreach (Animal passanger in passangers)
             {
-                if (PotentialPassanger.CanEat(Passanger) || Passanger.CanEat(PotentialPassanger))
+                if (potentialPassanger.CanEat(passanger) || passanger.CanEat(potentialPassanger))
                 {
                     return false;
                 }
@@ -33,9 +33,9 @@ namespace S2_circustrein
             return true;
         }
 
-        private bool AnimalFits(Animal PotentialMatchAnimal)
+        private bool AnimalFits(Animal potentialMatchAnimal)
         {
-            if ((int)PotentialMatchAnimal.Size + GetCurrentSize() > MaxSize)
+            if ((int)potentialMatchAnimal.Size + GetCurrentSize() > maxSize)
             {
                 return false;
             }
@@ -45,16 +45,16 @@ namespace S2_circustrein
         private int GetCurrentSize()
         {
             int wagonSize = 0;
-            foreach(Animal Passanger in Passangers)
+            foreach(Animal Passanger in passangers)
             {
                 wagonSize += (int)Passanger.Size;
             }
             return wagonSize;
         }
 
-        public void AddAnimal(Animal Animal)
+        public void AddAnimal(Animal animal)
         {
-            Passangers.Add(Animal);
+            passangers.Add(animal);
         }
     }
 }
