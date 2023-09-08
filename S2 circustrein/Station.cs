@@ -18,11 +18,18 @@ namespace S2_circustrein
         {
             wagons = new List<Wagon>();
             List<Animal> sortedAnimals = Sort(animals);
-            
-            foreach (Animal animal in sortedAnimals)
+            AddAnimalsToTrain(sortedAnimals);
+           
+            return wagons;
+        }
+
+        private void AddAnimalsToTrain(List<Animal> animals)
+        {
+            foreach (Animal animal in animals)
             {
                 bool IsNotAdded = true;
-                foreach (Wagon wagon in wagons) { 
+                foreach (Wagon wagon in wagons)
+                {
                     if (wagon.CanAddAnimal(animal) && IsNotAdded)
                     {
                         IsNotAdded = false;
@@ -34,10 +41,9 @@ namespace S2_circustrein
                     CreateWagonWithAnimalInIt(animal);
                 }
             }
-            return wagons;
         }
 
-        public void CreateWagonWithAnimalInIt(Animal animal)
+        private void CreateWagonWithAnimalInIt(Animal animal)
         {
             Wagon newWagon = new();
             newWagon.AddAnimal(animal);

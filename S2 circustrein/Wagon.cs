@@ -22,15 +22,23 @@ namespace S2_circustrein
             {
                 return false;
             }
+            if(WillEatEachother(potentialPassanger))
+            {
+                return false;
+            }
+            return true;
+        }
 
+        private bool WillEatEachother(Animal potentialPassanger)
+        {
             foreach (Animal passanger in passangers)
             {
                 if (potentialPassanger.CanEat(passanger) || passanger.CanEat(potentialPassanger))
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         private bool AnimalFits(Animal potentialMatchAnimal)
