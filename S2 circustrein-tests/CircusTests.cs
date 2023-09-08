@@ -94,6 +94,8 @@ namespace S2_circustrein_tests
             {
                 wagon.AddAnimal(AnimalFactory.RandomAnimal());
             }
+
+            //Assert
         }
     }
 }
