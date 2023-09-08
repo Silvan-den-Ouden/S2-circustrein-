@@ -71,10 +71,14 @@ namespace S2_circustrein_tests
         public void Wont_Make_Wagon_When_No_Animals()
         {
             //Arrange
+            List<Animal> test_case = _tests.GetCase(0);
+            List<Wagon> emptyList = new();
 
             //Act
+            _station.MakeTrain(test_case);
 
             //Assert
+            Assert.AreEqual(_station.wagons.Count, emptyList.Count);
         }
 
         [TestMethod]
