@@ -45,9 +45,9 @@ namespace S2_circustrein
         private int GetCurrentSize()
         {
             int wagonSize = 0;
-            foreach(Animal Passanger in passangers)
+            foreach(Animal passanger in passangers)
             {
-                wagonSize += (int)Passanger.Size;
+                wagonSize += (int)passanger.Size;
             }
             return wagonSize;
         }

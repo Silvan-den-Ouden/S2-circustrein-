@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2 circustrein", "S2 circustrein\S2 circustrein.csproj", "{08D444EE-45CB-435B-B059-4BE76F1114FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2 circustrein", "S2 circustrein\S2 circustrein.csproj", "{08D444EE-45CB-435B-B059-4BE76F1114FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2 circustrein-tests", "S2 circustrein-tests\S2 circustrein-tests.csproj", "{DD8E49A6-3420-4230-B04A-1883ADF79021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{08D444EE-45CB-435B-B059-4BE76F1114FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08D444EE-45CB-435B-B059-4BE76F1114FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08D444EE-45CB-435B-B059-4BE76F1114FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8E49A6-3420-4230-B04A-1883ADF79021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8E49A6-3420-4230-B04A-1883ADF79021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8E49A6-3420-4230-B04A-1883ADF79021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8E49A6-3420-4230-B04A-1883ADF79021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

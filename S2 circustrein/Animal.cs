@@ -13,10 +13,13 @@ namespace S2_circustrein
             Small = 1, Medium = 3, Large = 5
         }
 
-        public SizeEnum Size { get; private set; }
-        public bool Carnivorous { get; private set; }
-        public string Name { get; private set; }
+        public SizeEnum Size { get;  set; }
+        public bool Carnivorous { get;  set; }
+        public string Name { get;  set; }
 
+        public Animal(string _name) {
+            Name = _name;
+        }
 
         public Animal(SizeEnum _size, bool _carnivorous, string _name)
         {
