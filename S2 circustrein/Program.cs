@@ -4,10 +4,8 @@ using S2_circustrein;
 
 TestCases _tests = new();
 
-List<Animal> testCase = _tests.GetCase(1);
+List<Animal> testCase = _tests.GetCase(6);
 Station station = new();
-Animal MediumHerb = new(Animal.SizeEnum.Medium, false, "Deer");
-Animal Deer = new(Animal.SizeEnum.Medium, false, "Deer");
 
 
 

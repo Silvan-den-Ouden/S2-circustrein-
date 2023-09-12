@@ -17,21 +17,25 @@ namespace S2_circustrein
         public List<Wagon> MakeTrain(List<Animal> animals)
         {
             wagons = new List<Wagon>();
-            List<Animal> sortedAnimals = Sort(animals);
-            AddAnimalsToTrain(sortedAnimals);
-           
+            List<Animal> sortedAnimals = Sort(animals, false);
+            List<Animal> sortedAnimals2 = Sort(animals, true);
+            if (AddAnimalsToTrain(sortedAnimals) <= AddAnimalsToTrain(sortedAnimals2))
+            {
+                AddAnimalsToTrain(sortedAnimals);
+            }
+            else
+            {
+                AddAnimalsToTrain(sortedAnimals2);
+            }
+
             return wagons;
         }
 
-        private void AddAnimalsToTrain(List<Animal> animals)
+        private int AddAnimalsToTrain(List<Animal> animals)
         {
+            wagons.Clear();
             foreach (Animal animal in animals)
             {
-                if ((int)animal.Size == 1 && animal.Carnivorous)
-                {
-                    animals = SmallCarnivoreAdded(animal, animals);
-                }
-                else
                 {
                     bool IsNotAdded = true;
                     foreach (Wagon wagon in wagons)
@@ -48,80 +52,7 @@ namespace S2_circustrein
                     }
                 }
             }
-        }
-
-        private List<Animal> SmallCarnivoreAdded(Animal animal, List<Animal> animals)
-        {
-            CreateWagonWithAnimalInIt(animal);
-            Wagon wagon = wagons.Last();
-            Animal Deer = new(Animal.SizeEnum.Medium, false, "Deer");
-            Animal Buffalo = new(Animal.SizeEnum.Large, false, "Buffalo");
-
-
-            if (CanFindThreeMedHerbs(animals))
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    wagon.AddAnimal(Deer);
-                    animals.Remove(Deer);
-                }
-            } else if (CanFindLargeAndMedHerb(animals))
-            {
-                wagon.AddAnimal(Deer);
-                animals.Remove(Deer);
-                wagon.AddAnimal(Buffalo);
-                animals.Remove(Buffalo);
-            } 
-
-            List<Animal> remainingAnimals = animals;
-            return remainingAnimals;
-        }
-
-        private bool CanFindThreeMedHerbs(List<Animal> animals)
-        {
-            int mediumHerbCount = 0;
-            foreach(Animal animal in animals)
-            {
-                if((int)animal.Size == 3 && animal.Carnivorous == false)
-                {
-                    mediumHerbCount++;
-                }
-            }
-
-            if (mediumHerbCount >= 3)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool CanFindLargeAndMedHerb(List<Animal> animals)
-        {
-            bool foundMedHerb = false;
-            bool foundLargeHerb = false;
-
-            foreach (Animal animal in animals)
-            {
-                if (!animal.Carnivorous)
-                {
-                    if ((int)animal.Size == 3)
-                    {
-                        foundMedHerb = true;
-                    }
-                    if ((int)animal.Size == 5)
-                    {
-                        foundLargeHerb = true;
-                    }
-                }
-            }
-
-            if(foundMedHerb && foundLargeHerb)
-            {
-                return true;
-            }
-
-            return false;
+            return wagons.Count;
         }
 
         private void CreateWagonWithAnimalInIt(Animal animal)
@@ -131,11 +62,18 @@ namespace S2_circustrein
             wagons.Add(newWagon);
         }
 
-        private List<Animal> Sort(List<Animal> animals)
+        private List<Animal> Sort(List<Animal> animals, bool _)
         {
-            List<Animal> animalsSorted = animals.OrderBy(animal => animal.Size).ToList();
-            animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
-
+            List<Animal> animalsSorted = new();
+            if (_)
+            {
+                animalsSorted = animals.OrderBy(animal => animal.Size).ToList();
+                animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
+            } else
+            {
+                animalsSorted = animals.OrderByDescending(animal => animal.Size).ToList();
+                animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
+            }
             return animalsSorted;
         }
     }
