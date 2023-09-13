@@ -17,15 +17,15 @@ namespace S2_circustrein
         public List<Wagon> MakeTrain(List<Animal> animals)
         {
             wagons = new List<Wagon>();
-            List<Animal> sortedAnimals = Sort(animals, false);
-            List<Animal> sortedAnimals2 = Sort(animals, true);
-            if (AddAnimalsToTrain(sortedAnimals) <= AddAnimalsToTrain(sortedAnimals2))
+            List<Animal> sortedAnimalsDesc = Sort(animals, false);
+            List<Animal> sortedAnimalsAsc = Sort(animals, true);
+            if (AddAnimalsToTrain(sortedAnimalsDesc) <= AddAnimalsToTrain(sortedAnimalsAsc))
             {
-                AddAnimalsToTrain(sortedAnimals);
+                AddAnimalsToTrain(sortedAnimalsDesc);
             }
             else
             {
-                AddAnimalsToTrain(sortedAnimals2);
+                AddAnimalsToTrain(sortedAnimalsAsc);
             }
 
             return wagons;

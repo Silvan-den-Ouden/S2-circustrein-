@@ -23,38 +23,19 @@ namespace S2_circustrein
 
         public List<Animal> GetCase(int testCaseNumber)
         {
-            List<Animal> selectedTestCase;
-
-            switch (testCaseNumber)
+            List<Animal> selectedTestCase = testCaseNumber switch
             {
-                case 0:
-                    selectedTestCase = new List<Animal>();
-                    break;
-                case 1:
-                    selectedTestCase = new List<Animal> { Buffalo, Buffalo, Deer, Deer, Deer, Weasel };
-                    break;
-                case 2:
-                    selectedTestCase = new List<Animal> { Buffalo, Deer, Deer, Rabbit, Rabbit, Rabbit, Rabbit, Rabbit, Weasel };
-                    break;
-                case 3:
-                    selectedTestCase = new List<Animal> { Buffalo, Lion, Deer, Coyote, Rabbit, Weasel };
-                    break;
-                case 4:
-                    selectedTestCase = new List<Animal> { Buffalo, Lion, Deer, Deer, Deer, Deer, Deer, Coyote, Rabbit, Weasel, Weasel };
-                    break;
-                case 5:
-                    selectedTestCase = new List<Animal> { Buffalo, Buffalo, Deer, Rabbit, Weasel };
-                    break;
-                case 6:
-                    selectedTestCase = new List<Animal> { Weasel, Deer, Deer, Buffalo, Buffalo, Buffalo, Weasel, Weasel };
-                    break;
-                case 7:
-                    selectedTestCase = new List<Animal> { Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Lion, Lion, Lion, Deer, Deer, Deer, Deer, Deer, Coyote, Coyote, Coyote, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel };
-                    break;
-                default:
-                    throw new ArgumentException("Invalid test case number");
-            }
-
+                0 => new List<Animal>(),
+                1 => new List<Animal> { Buffalo, Buffalo, Deer, Deer, Deer, Weasel },
+                2 => new List<Animal> { Buffalo, Deer, Deer, Rabbit, Rabbit, Rabbit, Rabbit, Rabbit, Weasel },
+                3 => new List<Animal> { Buffalo, Lion, Deer, Coyote, Rabbit, Weasel },
+                4 => new List<Animal> { Buffalo, Lion, Deer, Deer, Deer, Deer, Deer, Coyote, Rabbit, Weasel, Weasel },
+                5 => new List<Animal> { Buffalo, Buffalo, Deer, Rabbit, Weasel },
+                6 => new List<Animal> { Weasel, Deer, Deer, Buffalo, Buffalo, Buffalo, Weasel, Weasel },
+                7 => new List<Animal> { Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Lion, Lion, Lion, Deer, Deer, Deer, Deer, Deer, Coyote, Coyote, Coyote, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel },
+                _ => throw new ArgumentException("Invalid test case number"),
+            };
+            
             return Randomize(selectedTestCase);
         }
 

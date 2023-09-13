@@ -82,6 +82,25 @@ namespace S2_circustrein_tests
         }
 
         [TestMethod]
+        public void Can_Pass_All_Prewritten_Test_Cases()
+        {
+            //Arrange
+            List<int> WagonLengths = new();
+            List<int> TargetLengths = new(){ 0, 2, 2, 4, 5, 2, 3, 13 };
+
+            //Act
+            for(int i = 0; i <= 7; i++)
+            {
+                WagonLengths.Add(_station.MakeTrain(_tests.GetCase(i)).Count);
+            }
+
+            //Assert
+            for(int i = 0; i < TargetLengths.Count; i++) {
+                Assert.AreEqual(WagonLengths[i], TargetLengths[i]);
+            }
+        }
+
+        [TestMethod]
         public void Performence_Test()
         {
             //Arrange
