@@ -48,6 +48,24 @@ namespace S2_circustrein_tests
         }
 
         [TestMethod]
+        public void Bigger_Carnivore_Can_Eat_Smaller_Or_Equal_Herbivore()
+        {
+            //Arrange
+            Animal largeCarnivore = AnimalFactory.LargeCarnivore;
+            Animal largeHerbivore = AnimalFactory.LargeHerbivore;
+            Animal mediumHerbivore = AnimalFactory.MediumHerbivore;
+
+            //Act
+            bool result = largeCarnivore.CanEat(largeHerbivore);
+            bool result2 = largeCarnivore.CanEat(mediumHerbivore);
+
+            //Assert
+            Assert.IsTrue(result);
+            Assert.IsTrue(result2);
+        }
+
+
+        [TestMethod]
         public void Can_Complete_Test_Case_Optimally()
         {
             //Arrange
@@ -91,7 +109,8 @@ namespace S2_circustrein_tests
             //Act
             for(int i = 0; i <= 7; i++)
             {
-                WagonLengths.Add(_station.MakeTrain(_tests.GetCase(i)).Count);
+                _station.MakeTrain(_tests.GetCase(i));
+                WagonLengths.Add(_station.wagons.Count);
             }
 
             //Assert

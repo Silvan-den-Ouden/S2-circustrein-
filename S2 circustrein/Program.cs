@@ -8,9 +8,6 @@ List<Animal> testCase = _tests.GetCase(1);
 Station station = new();
 
 
-//Console.WriteLine(station.MakeTrain(_tests.GetCase(1)).Count);
-
-
 for (int i = 0; i < 10; i++) {
     station.MakeTrain(testCase);
 

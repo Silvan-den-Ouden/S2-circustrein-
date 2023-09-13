@@ -14,21 +14,18 @@ namespace S2_circustrein
             wagons = new List<Wagon>();
         }
 
-        public List<Wagon> MakeTrain(List<Animal> animals)
+        public void MakeTrain(List<Animal> animals)
         {
-            wagons = new List<Wagon>();
             List<Animal> sortedAnimalsDesc = Sort(animals, false);
             List<Animal> sortedAnimalsAsc = Sort(animals, true);
             if (AddAnimalsToTrain(sortedAnimalsDesc) <= AddAnimalsToTrain(sortedAnimalsAsc))
             {
                 AddAnimalsToTrain(sortedAnimalsDesc);
             }
-            else
-            {
-                AddAnimalsToTrain(sortedAnimalsAsc);
-            }
-
-            return wagons;
+            //else
+            //{
+            //    AddAnimalsToTrain(sortedAnimalsAsc);
+            //}
         }
 
         private int AddAnimalsToTrain(List<Animal> animals)
@@ -36,20 +33,18 @@ namespace S2_circustrein
             wagons.Clear();
             foreach (Animal animal in animals)
             {
+                bool IsNotAdded = true;
+                foreach (Wagon wagon in wagons)
                 {
-                    bool IsNotAdded = true;
-                    foreach (Wagon wagon in wagons)
+                    if (wagon.CanAddAnimal(animal) && IsNotAdded)
                     {
-                        if (wagon.CanAddAnimal(animal) && IsNotAdded)
-                        {
-                            IsNotAdded = false;
-                            wagon.AddAnimal(animal);
-                        }
+                        wagon.AddAnimal(animal);
+                        IsNotAdded = false;
                     }
-                    if (IsNotAdded)
-                    {
-                        CreateWagonWithAnimalInIt(animal);
-                    }
+                }
+                if (IsNotAdded)
+                {
+                    CreateWagonWithAnimalInIt(animal);
                 }
             }
             return wagons.Count;
@@ -62,18 +57,17 @@ namespace S2_circustrein
             wagons.Add(newWagon);
         }
 
-        private List<Animal> Sort(List<Animal> animals, bool _)
+        private List<Animal> Sort(List<Animal> animals, bool Ascending)
         {
             List<Animal> animalsSorted = new();
-            if (_)
+            if (Ascending)
             {
                 animalsSorted = animals.OrderBy(animal => animal.Size).ToList();
-                animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
             } else
             {
                 animalsSorted = animals.OrderByDescending(animal => animal.Size).ToList();
-                animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
             }
+            animalsSorted = animalsSorted.OrderByDescending(animal => animal.Carnivorous).ToList();
             return animalsSorted;
         }
     }
