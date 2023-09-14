@@ -28,6 +28,13 @@ namespace S2_circustrein
             }
             return true;
         }
+        public void AddAnimal(Animal animal)
+        {
+            if (CanAddAnimal(animal))
+            {
+                passangers.Add(animal);
+            }
+        }
 
         private bool WillEatEachother(Animal potentialPassanger)
         {
@@ -58,11 +65,6 @@ namespace S2_circustrein
                 wagonSize += (int)passanger.Size;
             }
             return wagonSize;
-        }
-
-        public void AddAnimal(Animal animal)
-        {
-            passangers.Add(animal);
         }
     }
 }

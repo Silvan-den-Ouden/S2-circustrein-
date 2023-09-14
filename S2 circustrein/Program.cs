@@ -4,11 +4,11 @@ using S2_circustrein;
 
 TestCases _tests = new();
 
-List<Animal> testCase = _tests.GetCase(1);
+List<Animal> testCase = _tests.GetCase(7);
 Station station = new();
 
 
-for (int i = 0; i < 10; i++) {
+for (int i = 0; i < 1; i++) {
     station.MakeTrain(testCase);
 
     Console.WriteLine($"Train {i+1}:");

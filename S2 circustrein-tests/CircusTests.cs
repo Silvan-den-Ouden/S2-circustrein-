@@ -132,5 +132,19 @@ namespace S2_circustrein_tests
 
             //Assert
         }
+
+        public void Performence_Test_2()
+        {
+            //Arrange
+
+            //Act
+            for(int i = 0; i < 1000; i++)
+            {
+                List<Animal> animals = AnimalFactory.RandomAnimals(5, 20);
+                _station.MakeTrain(animals);
+            }
+
+            //Assert
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace S2_circustrein
 
         public SizeEnum Size { get;  set; }
         public bool Carnivorous { get;  set; }
-        public string Name { get;  set; }
+        public string Name { get;  private set; }
 
         public Animal(string _name) {
             Name = _name;
