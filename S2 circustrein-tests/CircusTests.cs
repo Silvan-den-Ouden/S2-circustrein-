@@ -14,7 +14,7 @@ namespace S2_circustrein_tests
             Wagon emptyWagon = new();
 
             //Act
-            _wagon.AddAnimal(AnimalFactory.RandomAnimal());
+            _wagon.TryAddAnimal(AnimalFactory.RandomAnimal());
 
             //Assert
             Assert.AreNotSame(emptyWagon, _wagon);
@@ -26,7 +26,7 @@ namespace S2_circustrein_tests
             //Arrange
 
             //Act
-            bool result = _wagon.CanAddAnimal(AnimalFactory.RandomAnimal());
+            bool result = _wagon.TryAddAnimal(AnimalFactory.RandomAnimal());
 
             //Assert
             Assert.IsTrue(result);
@@ -36,12 +36,12 @@ namespace S2_circustrein_tests
         public void Wont_Add_Animal_To_Full_Wagon()
         {
             //Arrange
-            _wagon.AddAnimal(AnimalFactory.LargeHerbivore);
-            _wagon.AddAnimal(AnimalFactory.LargeHerbivore);
+            _wagon.TryAddAnimal(AnimalFactory.LargeHerbivore);
+            _wagon.TryAddAnimal(AnimalFactory.LargeHerbivore);
             Animal animal = AnimalFactory.RandomAnimal();
 
             //Act
-            bool result = _wagon.CanAddAnimal(animal); 
+            bool result = _wagon.TryAddAnimal(animal); 
             
             //Assert
             Assert.IsFalse(result);
@@ -127,18 +127,19 @@ namespace S2_circustrein_tests
             //Act
             for(int i = 0; i < 100000; i++)
             {
-                _wagon.AddAnimal(AnimalFactory.RandomAnimal());
+                _wagon.TryAddAnimal(AnimalFactory.RandomAnimal());
             }
 
             //Assert
         }
 
+        [TestMethod]
         public void Performence_Test_2()
         {
             //Arrange
 
             //Act
-            for(int i = 0; i < 1000; i++)
+            for(int i = 0; i < 10000; i++)
             {
                 List<Animal> animals = AnimalFactory.RandomAnimals(5, 20);
                 _station.MakeTrain(animals);

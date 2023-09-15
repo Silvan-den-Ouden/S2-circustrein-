@@ -22,10 +22,6 @@ namespace S2_circustrein
             {
                 AddAnimalsToTrain(sortedAnimalsDesc);
             }
-            //else
-            //{
-            //    AddAnimalsToTrain(sortedAnimalsAsc);
-            //}
         }
 
         private int AddAnimalsToTrain(List<Animal> animals)
@@ -36,9 +32,8 @@ namespace S2_circustrein
                 bool IsNotAdded = true;
                 foreach (Wagon wagon in wagons)
                 {
-                    if (wagon.CanAddAnimal(animal) && IsNotAdded)
+                    if (IsNotAdded && wagon.TryAddAnimal(animal))
                     {
-                        wagon.AddAnimal(animal);
                         IsNotAdded = false;
                     }
                 }
@@ -53,7 +48,7 @@ namespace S2_circustrein
         private void CreateWagonWithAnimalInIt(Animal animal)
         {
             Wagon newWagon = new();
-            newWagon.AddAnimal(animal);
+            newWagon.TryAddAnimal(animal);
             wagons.Add(newWagon);
         }
 

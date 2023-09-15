@@ -16,24 +16,27 @@ namespace S2_circustrein
             passangers = new List<Animal>();
         }
 
-        public bool CanAddAnimal(Animal potentialPassanger)
+        public bool TryAddAnimal(Animal animal)
+        {
+            if (CanAddAnimal(animal))
+            {
+                passangers.Add(animal);
+                return true;
+            }
+            return false;
+        }
+
+        private bool CanAddAnimal(Animal potentialPassanger)
         {
             if (!AnimalFits(potentialPassanger))
             {
                 return false;
             }
-            if(WillEatEachother(potentialPassanger))
+            if (WillEatEachother(potentialPassanger))
             {
                 return false;
             }
             return true;
-        }
-        public void AddAnimal(Animal animal)
-        {
-            if (CanAddAnimal(animal))
-            {
-                passangers.Add(animal);
-            }
         }
 
         private bool WillEatEachother(Animal potentialPassanger)

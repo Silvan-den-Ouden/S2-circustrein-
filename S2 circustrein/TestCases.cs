@@ -35,7 +35,7 @@ namespace S2_circustrein
                 7 => new List<Animal> { Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Buffalo, Lion, Lion, Lion, Deer, Deer, Deer, Deer, Deer, Coyote, Coyote, Coyote, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel, Weasel },
                 _ => throw new ArgumentException("Invalid test case number"),
             };
-            
+
             return Randomize(selectedTestCase);
         }
 
